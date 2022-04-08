@@ -1,9 +1,10 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { createRoot } from "react-dom/client";
+import Ndap from "./components/Ndap";
 
-ReactDOM.render(
+const root = createRoot(document.getElementById('root'))
+root.render(
     <React.StrictMode>
         <Ndap />
-    </React.StrictMode>,
-    document.getElementById('root')
-)
+    </React.StrictMode>
+);
