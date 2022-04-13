@@ -14,7 +14,6 @@ const Top = () => {
                     </li>
                 </ul>
                 <hr />
-                <Routers
             </div>
         </BrowserRouter>
     );
