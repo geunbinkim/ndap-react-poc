@@ -8,8 +8,8 @@ const Top = () => {
                 borderBottom: "solid 1px",
                 paddingBottom: "1rem",
             }}>
-                <Link to="/importjob">Import Jobs</Link> | {" "}
-                <Link to="/dashboard">Dashboard</Link>
+                <Link to="/dashboard">Dashboard</Link> | {" "}
+                <Link to="/importjob">Import Jobs</Link>
             </nav>
         </div>
     );

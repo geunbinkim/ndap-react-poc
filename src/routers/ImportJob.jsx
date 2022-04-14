@@ -1,60 +1,34 @@
 import React, {useCallback} from 'react';
-import {Button, Form} from "antd";
-import List from "../components/List";
-import {useNavigate} from "react-router-dom";
+import {Button, Form, Input, Select} from "antd";
+import {useNavigate, useParams} from "react-router-dom";
 
 const ImportJob = () => {
-    const dummy = [{"id":1,"name":"ij-userTable","type":"FILES_TO_HIVE","owner":"admin","target":"default/user_table","created":1646975191000,"updated":1646975191000,"dataSource":{"id":2,"name":"ssh-qa","type":"SSH"},"lastInstance":null}];
-    // const headers = ['Name', 'Connection', 'Target', 'Owner', 'Created', 'Last Status', 'Action'];
-    const headers = [
-        {
-            title: 'Name',
-            dataIndex: 'name',
-            key: 'name',
-        },
-        {
-            title: 'Connection',
-            dataIndex: 'type',
-            key: 'type',
-        },
-        {
-            title: 'Target',
-            dataIndex: 'target',
-            key: 'target',
-        },
-        {
-            title: 'Owner',
-            dataIndex: 'owner',
-            key: 'owner',
-        },
-        {
-            title: 'Created',
-            dataIndex: 'created',
-            key: 'created',
-        },
-        {
-            title: 'Last Status',
-            dataIndex: 'lastInstance',
-            key: 'lastInstance',
-        },
-        {
-            title: 'Action',
-        },
-    ];
-
-    let navi = useNavigate();
-
+    const { id } = useParams();
+    const { Option } = Select;
+    const navi = useNavigate();
     const onClick = useCallback((e) => {
-        navi("/importJobForm", {replace: true});
-    }, [])
-    return (
-        <div>
-            <h1>Import Jobs</h1>
-            <Button onClick={onClick}>Create Import Job</Button>
+        navi('/importjobs', {replace : false});
+    });
+    const onFinish = useCallback((e) => {
 
-            <List columns={headers} dataSource={dummy} />
-        </div>
-);
+    });
+    return (
+        <>
+            <h1>Import Job | {id ? 'Edit' : 'Create'}</h1>
+            <Button onClick={onClick}>Back to List</Button>
+
+            <Form onFinish={onFinish}>
+                <Form.Item label="Name" name="name" rules={[{required : true, message : 'Name is Required!'}]}>
+                    <Input name="name" placeholder="Insert new Import Job name." />
+                </Form.Item>
+                <Form.Item>
+                    <Select placeholder="select...">
+                        <Option></Option>
+                    </Select>
+                </Form.Item>
+            </Form>
+        </>
+    );
 };
 
 export default ImportJob;
