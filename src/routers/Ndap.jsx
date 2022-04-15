@@ -9,7 +9,6 @@ const Ndap = () => {
     return (
         <>
             <Top />
-            <hr />
             <Routes>
                 <Route path="/dashboard" exact={true} element={<Dashboard />} />
                 <Route path="/importjobs" exact={true} element={<ImportJobs />} />
