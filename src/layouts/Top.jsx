@@ -9,7 +9,7 @@ const Top = () => {
                 paddingBottom: "1rem",
             }}>
                 <Link to="/dashboard">Dashboard</Link> | {" "}
-                <Link to="/importjob">Import Jobs</Link>
+                <Link to="/importjobs">Import Jobs</Link>
             </nav>
         </div>
     );
