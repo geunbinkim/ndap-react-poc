@@ -1,6 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Button, Form, Input, Select } from 'antd';
+import { Button, Checkbox, Form, Input, Select } from 'antd';
+import DatabaseTypeForm from '../../components/transfer/DatabaseTypeForm';
+import SSHTypeForm from '../../components/transfer/SSHTypeForm';
+import S3ATypeForm from '../../components/transfer/S3ATypeForm';
+import ExternalHdfsTypeForm from '../../components/transfer/ExternalHdfsTypeForm';
+import ExternalNdapTypeForm from '../../components/transfer/ExternalNdapTypeForm';
 
 function ConnectionEditor() {
     const navigate = useNavigate();
@@ -10,10 +15,6 @@ function ConnectionEditor() {
     const onCancel = () => {
         navigate('/connections');
     };
-
-    useEffect(() => {
-        console.log(connectionType);
-    }, [connectionType]);
 
     return (
         <>
@@ -61,79 +62,21 @@ function ConnectionEditor() {
                 <hr />
                 {
                     {
-                        DATABASE: (
-                            <>
-                                <Form.Item
-                                    label="JDBC URL"
-                                    name="jdbcUrl"
-                                    rules={[
-                                        {
-                                            required: true,
-                                            message: 'JDBC URL is Required',
-                                        },
-                                    ]}
-                                >
-                                    <Input />
-                                </Form.Item>
-                                <Form.Item
-                                    label="User Name"
-                                    name="userName"
-                                    rules={[
-                                        {
-                                            required: true,
-                                            message: 'User Name is Required',
-                                        },
-                                    ]}
-                                >
-                                    <Input />
-                                </Form.Item>
-                                <Form.Item
-                                    label="Password"
-                                    name="password"
-                                    rules={[
-                                        {
-                                            required: true,
-                                            message: 'Password is Required',
-                                        },
-                                    ]}
-                                >
-                                    <Input.Password />
-                                </Form.Item>
-                                <Form.Item
-                                    label="Driver Class"
-                                    name="driverClass"
-                                >
-                                    <Input />
-                                </Form.Item>
-                            </>
-                        ),
-                        SSH: (
-                            <>
-                                <h1>test2</h1>
-                                <h1>test2</h1>
-                                <h1>test2</h1>
-                            </>
-                        ),
-                        S3A: (
-                            <>
-                                <h1>test3</h1>
-                                <h1>test3</h1>
-                            </>
-                        ),
-                        EXTERNAL_HDFS: (
-                            <>
-                                <h1>test4</h1>
-                                <h1>test4</h1>
-                            </>
-                        ),
-                        EXTERNAL_NDAP: (
-                            <>
-                                <h1>test5</h1>
-                                <h1>test5</h1>
-                            </>
-                        ),
+                        DATABASE: <DatabaseTypeForm />,
+                        SSH: <SSHTypeForm />,
+                        S3A: <S3ATypeForm />,
+                        EXTERNAL_HDFS: <ExternalHdfsTypeForm />,
+                        EXTERNAL_NDAP: <ExternalNdapTypeForm />,
                     }[connectionType]
                 }
+                <Form.Item
+                    name="testConnection"
+                    wrapperCol={{ offset: 3, span: 16 }}
+                    initialValue
+                    valuePropName="checked"
+                >
+                    <Checkbox>Test Connection</Checkbox>
+                </Form.Item>
                 <hr />
                 <Form.Item>
                     <Button
