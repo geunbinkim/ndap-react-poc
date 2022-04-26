@@ -1,0 +1,11 @@
+body #root {
+    font-family: 'NotoSans', 'Noto Sans KR', sans-serif;
+}
+
+.ant-layout-header{
+    padding : 0
+}
+
+.site-layout-background{
+
+}

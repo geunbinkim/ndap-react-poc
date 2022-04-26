@@ -1,0 +1,20 @@
+#components-layout-demo-fixed .logo {
+    float: left;
+    width: 120px;
+    height: 31px;
+    margin: 16px 24px 16px 0;
+    background: rgba(255, 255, 255, 0.2);
+}
+.site-layout .site-layout-background {
+    background: #fff;
+}
+
+.logo {
+    color: white;
+    margin-right: 10px;
+    float: left;
+    width: 64px;
+    height: 64px;
+    background-image: url("./public/img/ndap_bi.png");
+    background-repeat: no-repeat;
+}
