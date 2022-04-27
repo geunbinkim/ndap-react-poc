@@ -16,6 +16,10 @@ function ConnectionEditor() {
         navigate('/connections');
     };
 
+    const onSubmit = (values) => {
+        console.log(values);
+    };
+
     return (
         <>
             <h1>Connection | {param.id ? 'Edit' : 'Create'}</h1>
@@ -26,6 +30,7 @@ function ConnectionEditor() {
                 wrapperCol={{ span: 8 }}
                 initialValues={{ remember: true }}
                 autoComplete="off"
+                onFinish={onSubmit}
             >
                 <Form.Item
                     label="Name"
@@ -80,7 +85,6 @@ function ConnectionEditor() {
                 <hr />
                 <Form.Item>
                     <Button
-                        style={{ display: 'inline-block' }}
                         type="default"
                         danger
                         htmlType="button"
