@@ -1,6 +1,6 @@
 import React from 'react';
 import { BellFilled, CloseCircleOutlined } from '@ant-design/icons';
-import { Popover } from 'antd';
+import { Badge, Popover } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import ModalButton from './ModalButton';
 import { checkNotification } from '../reducers/notification';
@@ -43,13 +43,17 @@ function Notification() {
             trigger="click"
             placement="rightBottom"
         >
-            <BellFilled
-                style={{
-                    fontSize: '23px',
-                    color: 'rgba(255, 255, 255, 0.65)',
-                    cursor: 'pointer',
-                }}
-            />
+            <Badge
+                count={contents.filter((content) => !content.isChecked).length}
+            >
+                <BellFilled
+                    style={{
+                        fontSize: '23px',
+                        color: 'rgba(255, 255, 255, 0.65)',
+                        cursor: 'pointer',
+                    }}
+                />
+            </Badge>
         </Popover>
     );
 }
